@@ -134,7 +134,7 @@ def keypad():
         y += sequence[i]
 
     z = x - y
-    print(f"The Z for these tiles is: {z}\nThe sequence is:\n")
+    print(f"The Z for this keypad is: {z}\nThe sequence is:\n")
 
     if z < 0.5:
         print("1234")
@@ -197,18 +197,6 @@ def keypadChecker(keypSeq):
             # print(result)
 
     return result
-
-
-def keypadCheckerTwo(button: int):
-    if button < 10:
-        return 10
-    elif 10 <= button <= 20:
-        return
-    elif 20 <= button <= 80:
-        return 30
-    else:
-        return 10
-
 
 def binary():
     print("binary")
