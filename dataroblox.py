@@ -1,3 +1,7 @@
+passer = open("password.txt", "r")
+passVar = passer.read()
+
+
 def init():
     global userName
     userName = str(input())
@@ -11,7 +15,7 @@ def password():
 def passwordCheck():
     global user
     user = None
-    if userPass == "123123":
+    if userPass == passVar:
         user = True
         return user
     else:

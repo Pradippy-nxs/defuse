@@ -7,9 +7,9 @@ def starter():
 
 
 def login():
-    print("Please, enter your name: ")
+    print("\nPlease, enter your name: ")
     dat.init()
-    print("Please, enter your password: ")
+    print("\nPlease, enter your password: ")
     dat.password()
     loginSuccess()
 
@@ -31,10 +31,13 @@ def logout():
 
 
 def moduleSelector():
-    print("\nPlease choose your Module!\n1. Casual\nL. Log out")
+    print("\nPlease choose your Module!\n1. Casual\nL. Log out\n0. Exit\n")
     module = str(input())
     if module == "1":
         casual()
+    if module == "0":
+        print("\nThank you for using this app!")
+        exit()
     elif module == "m" and "M":
         starter()
         # print("tololll")
@@ -53,6 +56,8 @@ def casual():
         wires()
     elif moduleSelect == "0":
         moduleSelector()
+    elif moduleSelect == "3":
+        hexadecimal()
     else:
         print("We're working on that, sorry for the inconvenience!")
 
@@ -66,7 +71,17 @@ def buttons():
 
 
 def hexadecimal():
-    print("Hexadecimal")
+    sequence = str(input("Please input the hexadecimal sequence!\n")).split()
+    solvedSequence = ""
+    for i in range(0, len(sequence)):
+        solvedSequence += hexadecimalCheck(sequence[i])
+    print(f"Solved sequence: {solvedSequence}\n")
+    input("Press anything to continue")
+    casual()
+
+
+def hexadecimalCheck(hex: str):
+    return chr(int(hex, 16))
 
 
 def tiles():
