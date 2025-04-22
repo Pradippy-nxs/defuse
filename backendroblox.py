@@ -32,19 +32,20 @@ def logout():
 
 def moduleSelector():
     print("\nPlease choose your Module!\n1. Casual\nL. Log out\n0. Exit\n")
-    module = str(input())
+    module = str(input()).lower()
     if module == "1":
         casual()
     if module == "0":
         print("\nThank you for using this app!")
         exit()
-    elif module == "m" and "M":
+    elif module == "m":
         starter()
         # print("tololll")
-    if module == "l" and "L":
+    if module == "l":
         logout()
     else:
         print("We're working on that, sorry for the inconvenience!")
+        moduleSelector()
 
 
 def casual():
@@ -58,8 +59,11 @@ def casual():
         moduleSelector()
     elif moduleSelect == "3":
         hexadecimal()
+    elif moduleSelect == "4":
+        tiles()
     else:
         print("We're working on that, sorry for the inconvenience!")
+        casual()
 
 
 def wires():
@@ -71,7 +75,7 @@ def buttons():
 
 
 def hexadecimal():
-    sequence = str(input("Please input the hexadecimal sequence!\n")).split()
+    sequence = str(input("Please input the hexadecimal sequence!\n")).lower().split()
     solvedSequence = ""
     for i in range(0, len(sequence)):
         solvedSequence += hexadecimalCheck(sequence[i])
@@ -85,7 +89,28 @@ def hexadecimalCheck(hex: str):
 
 
 def tiles():
-    print("tiles")
+    pair = str(input("Please input the color pair!\n")).lower().split()
+    numResult = 0
+    for i in range(0, len(pair)):
+        numResult += tilesChecker(pair[i])
+    print(f"Solved pair: {numResult}\n")
+    input("Press anything to continue")
+    casual()
+
+
+def tilesChecker(color):
+    if color == "r" and "red":
+        return 1
+    if color == "y" and "yellow":
+        return 2
+    if color == "g" and "green":
+        return 9
+    if color == "b" and "blue":
+        return 7
+    if color == "p" and "pink":
+        return 6
+    if color == "w" and "white":
+        return 5
 
 
 def keypad():
