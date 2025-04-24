@@ -63,6 +63,8 @@ def casual():
         tiles()
     elif moduleSelect == "5":
         keypad()
+    elif moduleSelect == "6":
+        binary()
     else:
         print("We're working on that, sorry for the inconvenience!")
         casual()
@@ -198,8 +200,58 @@ def keypadChecker(keypSeq):
 
     return result
 
+
 def binary():
-    print("binary")
+    amount = 0
+    lights = str(
+        input("Please input the light sequence with 0 and 1!\n").replace(" ", "")
+    )
+
+    if len(lights) > 7:
+        print("Please input exactly 7 bits.")
+        binary()
+
+    amount = binaryCheck(lights)
+
+    print(f"Click red {amount} time(s)")
+
+    input("Press anything to continue.")
+    casual()
+
+
+def binaryCheck(lightSequence):
+    lit = 0
+    for i in range(0, len(lightSequence)):
+        if lightSequence[i] == "1":
+            lit += 1
+    unlit = 7 - lit
+    if unlit == 7:
+        return 1
+    if lightSequence[1] == "1" and lightSequence[6] == "0":
+        return 2
+    elif lightSequence[0] == "1" and lightSequence[1] == "1":
+        return 3
+    elif lightSequence[0] == "0" and lightSequence[6] == "0":
+        return 4
+    elif (
+        lightSequence[0] == "1" and lightSequence[1] == "1" and lightSequence[2] == "1"
+    ):
+        return 5
+    elif (
+        lightSequence[0] == "1"
+        and lightSequence[1] == "1"
+        and lightSequence[2] == "1"
+        and lightSequence[3] == "1"
+    ):
+        return 6
+    elif unlit > 3:
+        return 7
+    elif lit > 5:
+        return 8
+    elif lit == 7:
+        return 9
+    else:
+        return 10
 
 
 def mathematics():
