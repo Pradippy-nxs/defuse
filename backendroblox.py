@@ -65,6 +65,8 @@ def casual():
         keypad()
     elif moduleSelect == "6":
         binary()
+    elif moduleSelect == "7":
+        mathematics()
     else:
         print("We're working on that, sorry for the inconvenience!")
         casual()
@@ -255,7 +257,57 @@ def binaryCheck(lightSequence):
 
 
 def mathematics():
-    print("Mathematics")
+    result = 1
+    pair = str(input("Please input the letter pair.\n")).lower().replace(" ", "")
+    if len(pair) % 2 == 1:
+        print("Please input letters in sets of two")
+        mathematics()
+
+    for i in mathematicsChecker(pair):
+        result *= i
+    print(f"The result is: {result}")
+    input("Press anything to continue.")
+    casual()
+
+
+def mathematicsChecker(pair):
+    solvedPair = []
+    number = ""
+    i = 0
+    while i < len(pair):
+        if len(number) == 2:
+            i = i - 1
+            solvedPair.append(int(number))
+            number = ""
+        elif pair[i] != " ":
+            match pair[i]:
+                case "h":
+                    number += "0"
+                case "a":
+                    number += "1"
+                case "d":
+                    number += "2"
+                case "b":
+                    number += "3"
+                case "e":
+                    number += "4"
+                case "f":
+                    number += "5"
+                case "g":
+                    number += "6"
+                case "c":
+                    number += "7"
+                case "i":
+                    number += "8"
+                case "j":
+                    number += "9"
+                case _:
+                    number += "0"
+        i += 1
+
+    if number != "":
+        solvedPair.append(int(number))
+    return solvedPair
 
 
 def colorCode():
