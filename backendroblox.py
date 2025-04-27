@@ -67,6 +67,8 @@ def casual():
         binary()
     elif moduleSelect == "7":
         mathematics()
+    elif moduleSelect == "8":
+        colorCode()
     else:
         print("We're working on that, sorry for the inconvenience!")
         casual()
@@ -311,7 +313,44 @@ def mathematicsChecker(pair):
 
 
 def colorCode():
-    print("colorCode")
+    combination = (
+        str(input("Please input the 5 colors, then the 5 letter combination!\n"))
+        .lower()
+        .split()
+    )
+
+    print(f"The result is: {colorCodeChecker(combination)}")
+    input("Press anything to continue.")
+    casual()
+
+
+def colorCodeChecker(CnL):
+    y_raw = CnL[0]
+    x_raw = CnL[1]
+    y_val = 0
+    x_val = 0
+    for i in range(0, len(x_raw)):
+        if y_raw[i] == "r":
+            y_val += 0
+        elif y_raw[i] == "g":
+            y_val += 0
+        elif y_raw[i] == "b":
+            y_val += 1
+        elif y_raw[i] == "y":
+            y_val += 2
+        elif y_raw[i] == "w":
+            y_val += 3
+        if x_raw[i] == "r":
+            x_val += 1
+        elif x_raw[i] == "g":
+            x_val += 3
+        elif x_raw[i] == "b":
+            x_val += 2
+        elif x_raw[i] == "y":
+            x_val += 3
+        elif x_raw[i] == "w":
+            x_val += 4
+    return x_val - y_val
 
 
 def multiButtons():
